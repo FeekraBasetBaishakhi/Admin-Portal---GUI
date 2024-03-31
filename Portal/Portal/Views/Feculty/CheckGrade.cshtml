@@ -1,0 +1,37 @@
+﻿@model List<Portal.Models.Mark>
+@{
+    Layout = "~/Views/Shared/_FecultyLayout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<h2>Student Grades</h2>
+<form action="/Feculty/CheckGrade" method="post" class="search-box">
+
+    <input class="form-control" type="text" name="searchGrade" value="" placeholder="Search Grade by Course Name">
+    <input class="btn btn-primary" type="submit" value="Search" />
+
+</form>
+<table class="table table-bordered">
+    <tr>
+
+
+        <td>Course Name</td>
+        <td>Department</td>
+        <td>Grade</td>
+
+        <td></td>
+    </tr>
+    @foreach (var ms in Model)
+    {
+<tr>
+
+    <td>@ms.coursename</td>
+    <td>@ms.department</td>
+    <td>@ms.grade</td>
+    <td> <a href="/Feculty/CheckGradeDetails/@ms.userid" class="btn btn-default">Student Grade Details</a>
+         <a href="/Feculty/EditGrade/@ms.id" class="btn btn-success">Edit Grade</a>
+          <a href="/Feculty/DeleteGrade/@ms.id" class="btn btn-danger">Delete Grade</a></td>
+
+</tr>
+    }
+</table>
